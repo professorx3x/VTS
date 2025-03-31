@@ -8,7 +8,7 @@ import CustomInput from '@components/ui/CustomInput';
 import CustomText from '@components/ui/CustomText';
 import ModalDropdown from '@components/ui/ModalDropdown';
 import CustomButton from '@components/ui/CustomButton';
-import { navigate, resetAndNavigate } from '@utils/NavigationUtils';
+import { navigate, replace, resetAndNavigate } from '@utils/NavigationUtils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUp = () => {
@@ -80,7 +80,7 @@ const SignUp = () => {
       loading={loading}
       title="Register"
       />
-      <CustomText variant="h6" >Already have an account? <TouchableOpacity onPress={()=>navigate('UserLogin')} style={styles.login_btn}><Text style={styles.login_txt}>Login</Text></TouchableOpacity></CustomText>
+      <CustomText variant="h6" >Already have an account? <TouchableOpacity onPress={()=>replace('UserLogin')} style={styles.login_btn}><Text style={styles.login_txt}>Login</Text></TouchableOpacity></CustomText>
     </View>
   );
 };

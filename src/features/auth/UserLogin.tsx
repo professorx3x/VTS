@@ -1,7 +1,7 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { Colors, Fonts, Roles } from '@utils/Constants';
-import { navigate, resetAndNavigate } from '@utils/NavigationUtils';
+import { navigate, replace, resetAndNavigate } from '@utils/NavigationUtils';
 
 import { getDoc, doc } from 'firebase/firestore';
 import { auth,db } from '@config/firebase.Config';
@@ -60,7 +60,7 @@ const UserLogin = () => {
         loading={loading}
         title="Sign In"
         />
-        <CustomText variant="h6" >Doesn't have an account? <TouchableOpacity onPress={()=>navigate('UserLogin')} style={styles.login_btn}><Text style={styles.login_txt}>Sign Up</Text></TouchableOpacity></CustomText>
+        <CustomText variant="h6" >Doesn't have an account? <TouchableOpacity onPress={()=>replace('SignUp')} style={styles.login_btn}><Text style={styles.login_txt}>Sign Up</Text></TouchableOpacity></CustomText>
       </View>
     );
   };
