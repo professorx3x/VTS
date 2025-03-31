@@ -21,6 +21,7 @@ interface Props {
     children?: React.ReactNode;
     numberOfLines?:number;
     onLayout?: (event: object) => void;
+    onPress?: (event: object) => void;
 }
 
 const CustomText:FC<Props> = (
@@ -31,6 +32,7 @@ const CustomText:FC<Props> = (
     children,
     numberOfLines,
     onLayout,
+    onPress,
     ...props
 }
 ) => {

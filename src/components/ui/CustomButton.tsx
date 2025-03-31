@@ -16,7 +16,7 @@ const CustomButton:FC<CustomButtonProps> = ({onPress,loading,title,disabled}) =>
     onPress={onPress}
     disabled={disabled}
     activeOpacity={0.8}
-    style={[styles.btn,{backgroundColor:disabled ? Colors.disabled : Colors.secondary}]}>
+    style={[styles.btn,{backgroundColor:disabled ? Colors.disabled : Colors.primary}]}>
         {
             loading ?
             <ActivityIndicator size='small' color='#fff'/>:

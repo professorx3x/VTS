@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "367428700551",
+    "firebase_url": "https://vehicle-5eba5-default-rtdb.firebaseio.com",
+    "project_id": "vehicle-5eba5",
+    "storage_bucket": "vehicle-5eba5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367428700551:android:078b2e225644520cb66b22",
+        "android_client_info": {
+          "package_name": "com.vts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQnmy1j2zAYuQzq9qn4c0WTgZk-3RBb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
