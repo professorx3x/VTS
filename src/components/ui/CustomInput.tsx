@@ -8,11 +8,11 @@ import { Colors, Fonts } from '@utils/Constants';
 
 
 interface InputProps {
-  left: React.ReactNode;
+  left?: React.ReactNode;
   onClear?: () => void ;
   right ?:boolean;
 }
-const CustomInput :FC<InputProps& React.ComponentProps<typeof TextInput>>= ({left,onClear,right,...props}) => {
+const CustomInput :FC<InputProps& React.ComponentProps<typeof TextInput>> = ({left,onClear,right,...props}) => {
   return (
     <View style={styles.flexRow}>
       {left}

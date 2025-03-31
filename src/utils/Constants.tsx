@@ -1,5 +1,5 @@
 export enum Colors {
-    primary = '#FDCC00',
+    primary = '#5400FD',
     primary_light = '#ffe141',
     secondary = '#490D83',
     text = '#363636',
@@ -13,6 +13,11 @@ export enum Fonts {
     Light = 'Okra-MediumLight',
     SemiBold = 'Okra-Bold',
     Bold = 'Okra-ExtraBold',
+}
+export enum Roles {
+    User= 'User',
+    Admin = 'Admin',
+    Rider = 'Rider',
 }
 
 export const lightColors = [
