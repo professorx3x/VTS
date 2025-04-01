@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert ,StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, Alert ,StyleSheet, TouchableOpacity} from 'react-native';
 import { db,auth } from '@config/firebase.Config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
@@ -8,7 +8,7 @@ import CustomInput from '@components/ui/CustomInput';
 import CustomText from '@components/ui/CustomText';
 import ModalDropdown from '@components/ui/ModalDropdown';
 import CustomButton from '@components/ui/CustomButton';
-import { navigate, replace, resetAndNavigate } from '@utils/NavigationUtils';
+import { replace, resetAndNavigate } from '@utils/NavigationUtils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUp = () => {
