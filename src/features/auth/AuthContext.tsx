@@ -22,11 +22,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (user) {
         await AsyncStorage.setItem('user', JSON.stringify(user));
         setUser(user);
-
-        // Fetch role from Firestore and store it
         const userRole = await getUserRole(user.uid);
-        setRole(userRole);
-        await AsyncStorage.setItem('role', userRole || '');
+        if (userRole) {
+          setRole(userRole);
+          await AsyncStorage.setItem('role', userRole);
+        }
       } else {
         await AsyncStorage.removeItem('user');
         await AsyncStorage.removeItem('role');
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading(false);
     });
 
-    return unsubscribe; // Cleanup on unmount
+    return unsubscribe;
   }, []);
 
   // Logout function
