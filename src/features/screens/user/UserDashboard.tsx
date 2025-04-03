@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import { Colors } from '@utils/Constants';
 
 const UserDashboad = () => {
@@ -7,8 +7,8 @@ const UserDashboad = () => {
     <View>
       <Text style={styles.text}>UserDashboad</Text>
     </View>
-  )
-}
+  );
+};
 
 export default UserDashboad;
 

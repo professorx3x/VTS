@@ -5,11 +5,9 @@ import { navigationRef } from '@utils/NavigationUtils';
 import SplashScreen from '@features/auth/SplashScreen';
 import UserLogin from '@features/auth/UserLogin';
 import SignUp from '@features/auth/SignUp';
-import AdminDashboard from '@features/screens/AdminDashboard';
-import RiderDashboard from '@features/screens/RiderDashboard';
-import UserDashboard from '@features/screens/UserDashboard';
 import LoadingScreen from '@features/screens/LoadingScreen';
 import { AuthContext } from '@features/auth/AuthContext';
+import CustomBottomTab from '@components/ui/CustomBottomTab';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +20,7 @@ const Navigation: FC = () => {
     return <LoadingScreen />;
   }
   console.log(authContext);
-  const { user, role } = authContext;
+  const { user} = authContext;
 
   return (
     <NavigationContainer ref={navigationRef}>
@@ -36,17 +34,7 @@ const Navigation: FC = () => {
           </>
         ) : (
           // Role-Based Navigation
-          <>
-            {role === 'admin' && (
-              <Stack.Screen name="AdminDashboard" component={AdminDashboard} />
-            )}
-            {role === 'rider' && (
-              <Stack.Screen name="RiderDashboard" component={RiderDashboard} />
-            )}
-            {(!role || role === 'user') && (
-              <Stack.Screen name="UserDashboard" component={UserDashboard} />
-            )}
-          </>
+          <Stack.Screen name="Main" component={CustomBottomTab} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
