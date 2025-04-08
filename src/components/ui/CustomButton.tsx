@@ -9,17 +9,18 @@ interface CustomButtonProps{
     title: string;
     disabled: boolean;
     loading: boolean;
+    customStyles ?: any;
 }
-const CustomButton:FC<CustomButtonProps> = ({onPress,loading,title,disabled}) => {
+const CustomButton:FC<CustomButtonProps> = ({onPress,loading,title,disabled,customStyles}) => {
   return (
     <TouchableOpacity
     onPress={onPress}
     disabled={disabled}
     activeOpacity={0.8}
-    style={[styles.btn,{backgroundColor:disabled ? Colors.disabled : Colors.primary}]}>
+    style={[styles.btn,{backgroundColor:disabled ? Colors.disabled : Colors.primary},customStyles]}>
         {
             loading ?
-            <ActivityIndicator size='small' color='#fff'/>:
+            <ActivityIndicator size="small" color="#fff"/> :
             <CustomText style={styles.text} variant="h6" fontFamily={Fonts.SemiBold}>
                 {title}
             </CustomText>
@@ -41,4 +42,4 @@ const styles = StyleSheet.create({
     text:{
         color:'#fff',
     },
-})
+});

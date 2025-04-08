@@ -7,12 +7,13 @@ import RiderDashboad from '@features/screens/rider/RiderDashboard';
 import UserTripHistory from '@features/screens/user/UserTripHistory';
 import UserNotification from '@features/screens/user/UserNotification';
 import RiderJourneyHistory from '@features/screens/rider/RiderJourneyHistory';
-import VehicleRegistration from '@features/screens/rider/VehicleRegistration';
 import { Colors, Fonts, Roles } from '@utils/Constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '@features/auth/AuthContext';
 import CustomSafeArea from '@components/global/CustomSafeArea';
 import LoadingScreen from '@features/screens/LoadingScreen';
+import RiderNotification from '@features/screens/rider/RiderNotification';
+import VehicleDetailsScreen from '@features/screens/rider/VehicleDetailsScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -37,7 +38,7 @@ const CustomBottomTab: FC = () => {
     fetchRole();
   }, [authContext?.role]); // Runs when context role updates
 
-  if (loading) {return LoadingScreen;} // Prevent rendering until role is loaded
+  if (loading) {return <LoadingScreen/>;}
     return (
         <CustomSafeArea>
       <Tab.Navigator
@@ -60,7 +61,7 @@ const CustomBottomTab: FC = () => {
                 iconName = focused ? 'time' : 'time-outline';
               } else if (route.name === 'Notification') {
                 iconName = focused ? 'notifications' : 'notifications-outline';
-              } else if (route.name === 'Register') {
+              } else if (route.name === 'Vehicle') {
                 iconName = focused ? 'car' : 'car-outline';
               }
               return <Icon name={iconName} size={size} color={color} />;
@@ -75,7 +76,8 @@ const CustomBottomTab: FC = () => {
           <>
             <Tab.Screen name="Home" component={RiderDashboad} />
             <Tab.Screen name="History" component={RiderJourneyHistory} />
-            <Tab.Screen name="Register" component={VehicleRegistration} />
+            <Tab.Screen name="Vehicle" component={VehicleDetailsScreen} />
+            <Tab.Screen name="Notification" component={RiderNotification} />
           </>
         ) : role === Roles.User ? (
           <>
