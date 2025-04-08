@@ -1,19 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore,doc,getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, initializeAuth, getReactNativePersistence } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// React Native Firebase Messaging
 import messaging from "@react-native-firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKQV2eZ2N4okGPlygcCvpPqS_RbOFNwK0",
   authDomain: "vehicle.firebaseapp.com",
   projectId: "vehicle-5eba5",
-  storageBucket: "vehicle-5eba5.firebasestorage.app",
+  storageBucket: "vehicle-5eba5.appspot.com", 
   messagingSenderId: "367428700551",
   appId: "1:367428700551:android:078b2e225644520cb66b22",
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -26,7 +25,10 @@ const auth = initializeAuth(app, {
 // Initialize Firestore
 const db = getFirestore(app);
 
-// Initialize Firebase Cloud Messaging (FCM) for React Native
+// 🔥 Initialize Firebase Storage
+const storage = getStorage(app);
+
+// Initialize Firebase Cloud Messaging (FCM)
 const requestUserPermission = async () => {
   const authStatus = await messaging().requestPermission();
   const enabled =
@@ -38,7 +40,6 @@ const requestUserPermission = async () => {
   }
 };
 
-// Get FCM Token (Use this in your app)
 const getFCMToken = async () => {
   try {
     const token = await messaging().getToken();
@@ -48,11 +49,12 @@ const getFCMToken = async () => {
     console.error("Error getting FCM token:", error);
   }
 };
-const getUserRole = async (userId: string): Promise<string | null> => {
+
+const getUserRole = async (userId) => {
   try {
     const userDoc = await getDoc(doc(db, "users", userId));
     if (userDoc.exists()) {
-      return userDoc.data().role; // Assuming the Firestore document has a "role" field
+      return userDoc.data().role;
     }
   } catch (error) {
     console.error("Error fetching user role:", error);
@@ -69,4 +71,5 @@ const clearStorage = async () => {
   }
 };
 
-export { auth, db, messaging, requestUserPermission, getFCMToken,getUserRole ,clearStorage};
+// Export storage along with other Firebase services
+export { auth, db, storage, messaging, requestUserPermission, getFCMToken, getUserRole, clearStorage };
